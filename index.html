@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opacity Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .midcontainer {
+        width: 700px;
+        height: 450px;
+        background-color: blueviolet;
+        position: relative;
+        overflow: hidden;
+      }
+      .slide {
+        width: 700px;
+        height: 450px;
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      .slide.active {
+        opacity: 1;
+      }
+      .slide01 {
+        background-color: aquamarine;
+        font-size: 50px;
+        text-align: center;
+      }
+      .slide02 {
+        background-color: rgb(7, 150, 102);
+        font-size: 50px;
+        text-align: center;
+      }
+      .slide03 {
+        background-color: rgb(32, 172, 50);
+        font-size: 50px;
+        text-align: center;
+      }
+      .slide04 {
+        background-color: rgb(88, 36, 211);
+        font-size: 50px;
+        text-align: center;
+      }
+      .slide05 {
+        background-color: aquamarine;
+        font-size: 50px;
+        text-align: center;
+      }
+      button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      button i{
+        font-size: 30px;
+      }
+     
+    </style>
+
+    <div class="container">
+      <button id="btn1"><i class="fa-solid fa-circle-chevron-left"></i></button>
+      <div class="midcontainer">
+        <div class="slide slide01 active">slide 01</div>
+        <div class="slide slide02">slide 02</div>
+        <div class="slide slide03">slide 03</div>
+        <div class="slide slide04">slide 04</div>
+        <div class="slide slide05">slide 05</div>
+      </div>
+      <button id="btn2"><i class="fa-solid fa-circle-chevron-right"></i></button>
+    </div>
+
+    <script>
+    //   let button1 = document.querySelector("#btn1");
+    //   let button2 = document.querySelector("#btn2");
+    //   let slides = document.querySelectorAll(".slide");
+
+
+    //   let currentIndex = 0;
+
+      
+    //   slides[currentIndex].classList.add("active");
+
+    //   button1.addEventListener("click", function () {
+    //     slides[currentIndex].classList.remove("active");
+    //     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    //     slides[currentIndex].classList.add("active");
+    //   });
+
+    //   button2.addEventListener("click", function () {
+    //     slides[currentIndex].classList.remove("active");
+    //     currentIndex = (currentIndex + 1) % slides.length;
+    //     slides[currentIndex].classList.add("active");
+    //   });
+
+
+        let btn1 = document.querySelector("#btn1")
+        let btn2 = document.querySelector("#btn2")
+        let slider = document.querySelectorAll(".slide")
+        let count = 0
+
+        btn1.addEventListener("click", function(){
+           count--
+            if(count < 0 ){
+                count = 4
+            }
+            Remove_Class()
+            slider[count].classList.add("active")
+        })
+        btn2.addEventListener("click", function(){
+           count++
+            if(count > 4 ){
+                count = 0
+            }
+            Remove_Class()
+            slider[count].classList.add("active")
+        })
+
+        function Remove_Class(){
+            slider.forEach(element => {
+                element.classList.remove("active")
+            });
+    
+        }
+    </script>
+  </body>
+</html>
